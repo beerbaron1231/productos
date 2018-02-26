@@ -1,0 +1,62 @@
+<!-- 
+  Email: <input type="text" ng-model="email">
+  Password: <input type="text" ng-model="password">
+ <button ng-click="signIn()">Sign In Anonymously</button>
+
+  <br><br>
+
+  <button ng-click="createUser()">Create User</button>
+
+  <br><br>
+
+  <button ng-click="deleteUser()">Delete User</button>
+
+  <p ng-if="message">Message: <strong>{{ message }}</strong></p>
+  <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+</div>
+
+  <div ng-show="firebaseUser">
+    <p>Hello, {{ firebaseUser.displayName }}</p>
+    <button ng-click="auth.$signOut()">Sign Out</button>
+  </div>
+  <div ng-hide="firebaseUser">
+    <p>Welcome, please sign in.</p>
+    <button ng-click="test()">Sign In With Facebook</button>
+  </div>
+</div> -->
+<div class="container-fluid">
+	 <div class="form-group">
+    <label for="exampleInputName2">Búsqueda</label>
+    <input type="text" class="form-control" placeholder="nombre producto" ng-model="filter">
+  <div class="col-md-2 col-xs-2">
+  		<ol>
+  			<li ng-repeat="item in data.base.category ">{{item.name}}</li>
+
+  		</ol>
+  </div>
+
+
+  <div class="col-md-10 col-xs-10">
+  	<div ng-repeat="item in data.base.catalogo | filter:filter " >
+  		<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="thumbnail">
+      <img class="media-object img-rounded" ng-src="{{item.img}}" alt="..." >
+      <div class="caption">
+        <h4>{{item.description}}</h4>
+        <p>Precio: {{item.price | currency:"$":0}}</p>
+        <p>Stock actual <span class="badge">{{item.cantidad}}</span></p>
+        <p class="text-center">
+        	<button type="button" class="btn btn-default btn-sm">
+	  						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Favorito
+	  				</button>
+	  				<button type="button" class="btn btn-default btn-sm">
+	  					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Añadir
+	  				</button>
+	  				  
+	  	</p>
+      </div>
+    </div>
+  </div>
+  	</div>
+  </div>
+</div>
